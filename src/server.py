@@ -7,16 +7,16 @@ from pathlib import Path
 class MyHandler(BaseHTTPRequestHandler):
     def do_GET(self):
         address = self.address_string()
-        logging.info("GET from %s", address)
         template = Path("html/index.html").read_text()
-        return template.format(
+        output = template.format(
             date=date.today(),
             ip_address=address
         )
+        self.send_response(200)
+        print(output, file=self.wfile)
 
 
 def main():
-    logging.basicConfig(level=logging.INFO)
     server_address = ('', 8000)
     httpd = HTTPServer(server_address, MyHandler)
     httpd.serve_forever()
