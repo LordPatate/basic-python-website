@@ -13,7 +13,9 @@ class MyHandler(BaseHTTPRequestHandler):
             ip_address=address
         )
         self.send_response(200)
-        print(output, file=self.wfile)
+        self.send_header("Content-Type", "text/html")
+        self.end_headers()
+        _ = self.wfile.write(bytes(output, encoding="utf-8"))
 
 
 def main():
