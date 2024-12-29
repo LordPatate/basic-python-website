@@ -1,6 +1,5 @@
 from datetime import date
 from http.server import BaseHTTPRequestHandler, HTTPServer
-import logging
 from pathlib import Path
 
 
