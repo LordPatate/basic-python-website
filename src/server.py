@@ -18,7 +18,7 @@ class MyHandler(BaseHTTPRequestHandler):
 
 
 def main():
-    server_address = ('', 8000)
+    server_address = ('', 80)
     httpd = HTTPServer(server_address, MyHandler)
     httpd.serve_forever()
 
